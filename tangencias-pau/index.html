@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Animación paso a paso del ejercicio PAU de Castilla-La Mancha: tangencias mediante dilatación y potencia. Colegio Bérriz.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tangencias · PAU Castilla-La Mancha | Colegio Bérriz">
+<meta property="og:description" content="Píldora visual: circunferencia tangente a dos rectas y a otra circunferencia mediante dilatación y potencia.">
+<meta property="og:image" content="https://TU_USUARIO.github.io/pildoras-dibujo-tecnico/tangencias-pau/miniatura.jpg">
+<meta property="og:url" content="https://TU_USUARIO.github.io/pildoras-dibujo-tecnico/tangencias-pau/">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Tangencias · PAU Castilla-La Mancha</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#233449;background:#f3f5f8;--blue:#246be8}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;padding:clamp(14px,2.5vw,30px);display:flex;justify-content:center}
+.wrap{width:100%;max-width:950px}
+.top{display:flex;align-items:center;justify-content:center;gap:19px;margin:0 auto 18px}
+.crest{display:block;width:52px;height:68px;object-fit:contain;flex-shrink:0}
+.heading{min-width:0}
+.eyebrow{font-size:11px;font-weight:750;letter-spacing:.115em;text-transform:uppercase;color:#64758b;margin-bottom:5px}
+h1{font-size:clamp(19px,2.85vw,29px);line-height:1.2;letter-spacing:-.025em;margin:0;font-weight:780}
+.card{background:#fff;border:1px solid #e0e7ef;border-radius:17px;overflow:hidden;box-shadow:0 8px 28px rgba(28,46,74,.055)}
+.stage{width:min(100%,calc(68vh * 221 / 143));height:auto;display:block;margin:0 auto;background:#fbfcfe}
+.stage text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;paint-order:stroke;stroke:#fbfcfe;stroke-width:.9;stroke-linejoin:round}
+.stage .small-label{font-size:4.3px;fill:#263c52;font-weight:700}
+.stage .muted-label{font-size:3.8px;fill:#6f7d8d;font-weight:600}
+.stage .purple-label{font-size:4.1px;fill:#7046c3;font-weight:800}
+.stage .blue-label{font-size:4.2px;fill:#215fc7;font-weight:800}
+.stage .green-label{font-size:4.1px;fill:#168354;font-weight:800}
+.stage line,.stage circle,.stage path,.stage polygon{vector-effect:non-scaling-stroke}
+.caption-area{padding:11px 25px 13px;min-height:68px;display:flex;align-items:center;justify-content:center;border-top:1px solid #edf1f6;background:#fff}
+#phaseText{max-width:730px;text-align:center;font-size:clamp(13px,1.4vw,15px);line-height:1.45;font-weight:510;color:#445973}
+.controls{display:flex;justify-content:center;margin-top:15px}
+#play{appearance:none;border:0;border-radius:11px;background:#2869db;color:white;min-width:185px;padding:12px 26px;font:inherit;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 5px 11px rgba(40,105,219,.2);transition:background .15s,transform .15s}
+#play:hover{background:#1556c2}
+#play:active{transform:scale(.98)}
+#play:focus-visible{outline:3px solid #93bafd;outline-offset:4px}
+@media(max-width:550px){body{padding:12px}.top{gap:12px;margin-bottom:14px;justify-content:flex-start}.crest{width:42px;height:56px}.eyebrow{font-size:10px}h1{font-size:19px}.stage{width:100%}.caption-area{padding:11px 13px;min-height:78px}.card{border-radius:13px}.controls{margin-top:14px}}
+@media(prefers-reduced-motion:reduce){#play{transition:none}}
+/* Solo se muestran los nombres de los tres datos y sus transformaciones. */
+.stage text{display:none}
+.stage text.data-label{display:block;font-size:5.1px;font-weight:800;stroke:#fbfcfe;stroke-width:1.2px}
+.stage text.data-original{fill:#31485f}
+.stage text.data-transform{fill:#7043c8}
+.stage text.data-circletransform{fill:#bc791d}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <img class="crest" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAACICAYAAAD6U/WuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFxEAABcRAcom8z8AACpnSURBVHhe7X0JWBRXunbdfyZzZ+4kk4nDJDMxCQK9VNNojDFm0ZhoMllUolGDSxKXuO+7cYvKLrsIgoILAqKAoC2NiLiw74tsigKyCMjmgiRxG3nv81V3SVvdTSQ0ztz5+32e96muOqfO8r3f+c7pgj7FMEYYYYQRRhhhhBFGGGGEEUYYYYQRRhhhhBFGGMEwzG8ZhvkbwzC/Eyb8q/FfDMM8zzDMC2rqauB/qztA+I36XBeonGc0zqksyi8E1fknhmH6MAzzP8JEHaB8vwQq5+8Mw/ylizr/oD4K8RLDMEMYhjHRk071/z+N898LznsNVNE7DMP0YxjGjGGYZ4UZGIaxUHeaQEYVC9J5UL5BGsYxZxjmz4I8BDLSQHX+AQzDSPQYlEACv682nD68zDDMmwzDmDIMI1VTWB71Uy4wKn2mNr7OMMwrDMNYMgwj03EvpdN1Xjj2CZ2qxyBDUeXUIF1eQxBpGIdGBxlTF0jgt9RGJ9CRRqMQ1DFNgcmY5PW68JqG0XSByiKBNUc8fRZ6NonTX3Cd2mYluEZtoRCnCcrzttoJCNSepyIONfoDhmHeUBtXF55UHBp5lI8a/6L6vCtxeKPweYWgUEqOQ+kkAI1aIag+8v5fgi5xaLTQaNPEXzWciwf1hyIHjfbnnubI4T2vK5A41GgChamuxOHnLTIEhThdYY0Xhx+pVH5fQR4CGYRCGtVHnis0GoHCMHk2PycSSABhFNAlDpVPhtfMq6stFA6pHiLZikIoldfrIENR57oCeS55DXkpNZQf3kLQyOMnb/Lyj/WMHAqlVCeFDxKJDCSM8wQKZeQUZHg+/GouOHiQ91O7KC+FQQpNmmIRyJjCEEafKS+JT30j5yIBhXVQ+2jEEGjxQP16KuKQUXSFCyFIIDIkGVTolTxIaM3YTx35o8Y5DzIKpZFR9a2Q6JpQWOFqUBPkFGRcClW6VpNUp65+Uj3UJ37E6HISuk9TbHJOXataI7oAhZ1X9TiEEf9C0KhZzDDMBPUI+48ChReK8TTpaoYFiq10jdL47zoUCiiMaIYYuofiPRmJVk/8vEThhMIFxW0KOXzMp4UCv+KhEEH38as8ISjUUNihFSWRVkt8iKK2ULj9Tk1aytP8SGVRHspL99BcQvXzbaYj9YnSaJKnEceHKqqP+kx9pDmJFjZ83VQ2n/+pgDo3Ut0B6tyH6gmQwgN9pmuURnmo0RR/Bws8lIz6qXolQ+QnZcpHKy6ajIepy6LO0zkZiyb64eovwnwdZFBNkIMsVPNbhmHmMQyzXJ2PypqmPp/CMMw3DMNMZxhmnFrQlQzDzGEYZgbDMMvUaeQYFAJXq8uia0sZhpmpdlJytPnqfoxSp1O9VPZchmEc1YuCXgcZmBeDBxmNJmPeyDwoD30nolUReZOmODSp0mpKEyQkLYE1H/3QNRo9JA6NKN7LefBi8Ut3AomzRGO1RXnIaLPVaWS4oeo0qoMn9YNCHY1iMjgZnoSie6kMEoQck0YMjRIScIy6TBKHnIXKoVHGc6I6TdfiwuAg7xN6KoFGDRlJ+E2blp3UaBJOKA4JRkJQh+hIwuh7LkZLX6r3PR0rH1rFkWg8eHGoTvJ4Cq/jGYaZpL6XRs4IdRo5EJHCHYlP4mi2ge6brCGO5pfQzxmGmaouh0YU9VMT76pHIon+VEAGpWWtELyxhaDrFJp0hTXySBpZFMbIMJSPjEDgv1nTSKRRycd7otABKJ0eRPLXSZwFDMOsUIcVCk9b1bGfRKBws1adRkYlUnvokRDlpchAYn/GMMwq9Qgk56Py6BqNeApTlEYOQIJTfZriUIikOoTRoVdBAuh6rkWdo4YKQXlJGKE4JBoZlK6REOR9dM5P+hQGqLM071AYoxFIBtMlDnm6UJxFagOSkUhkmlNoDqJ2kjh0TiGKyiVSGKO2kgA0eraoDc4/3aA2khhULqVRHv75He8MvDgUDknkf6jPnxqosbqeEJDH0ygQfumjcETGJVE1465wziGPJgMLV1+0yuFDGtVNc4Xw2zb/tJoHH9Y05z8SnQxL7fhaHUKFoNFLeWgVaa0Wk39GSG3n5xwyOpXPt5X6TuJQO2kUkfi02BDaotdBnaRhz4c2mi/4xxlkIDI4P6HTJE2C8YsF8nB+8iUvpVGgOSGTEDRS+NBG3kxzDE3QJDC/xCYD8x2nlRTNH5pPB0gc8mwarfzfgUgMWm3RnEHGo1UepfGkkUFLehKH5ijqg436nO6nsEbi0CMncqQv1OckEAlCkz71n4Tj5xkqk8qm6MD3qddBRqLO0XKW5gua+Eg03pj8UpfykGEp3JDH0zkZn/KQiLSUpvuJfEgj41M+OiejUz4yBr9aI1EojRyEDE6hS/h0nF9Kkxh0pBBDpPvofloQrFenkfFJSDLuJ+oRwI8Iag+NMlqxUR00WviHqSQIiUf5yalo/qK2/MAwzDr1dSqbSCJSn54aqOFkLBpB5PU86DNdEz4Woc/k3eSFdKRz8ig6J9JnzS+cFFrIg/nnaCQ8P1ooHxmQ6tBc0vOgdLqXHIPaSCFU84+CVD+fxpPOqQ38qOFBQtMop/spOmiuFKlNdB/1he8D1UX5NcsmCp/7GWGEEUYYYcR/DCwkfX/z+ajhf7T51/H33NH603dsrK0ncMdRI/5oM2rE79VHPRz+exvrTwfZWFuPs7G2tu4Bx9lYjxrxqB08zU1/Q08/dP2ZvHfxu98xlt+N/3PgsZ2vlWeFm/+UF2XR8a+jWUdelLijKMOvo7T0QkdRul9HXrRYfV2YV4ORfTsKU106SktLe8zi3KiO3EjTjtwjFo+YGW7+09Gdr5VPH//nQLKX0Ia9gjfkfxi/17Fv3fVMGR6UyDneK+5NWuK+mvRZO12GeyUDgPaT4PDjSTwoHYAHJZ3t08X7RebArXDVPT3F/RLcLZLibrH8Ee9THSVytGbKsMe+bx3ZTWhLg8K8729GHnDp20xGac+3RFteLzKXRXs+i58KB6G98F20Fw7FT4WD8WOBFdpypRp5WbTl98f960qVna4r0Z7fH+15LNrzLPXydo4Z7jUfFJr5V+FBewFu5UhwK9dSi7fzLXG3SI4D2/o2k/2ENjUUnt+69KUMqowobIRhKUV7wSA0Fc9AWupqhCsXI+z4QiScW42K/Pn4seQT3M6T4laOGG25FriVK8P96zGcoUgcEosTTSi4Bm8ZWJybORLczLXUSa7OfEtsXfxSBvNCL/xJXC763ZjUMPOO9vNy3Mix7CXKcDNbjPai4SjNWwO3IBssdJJjnp0F5tmLMNdejA2+H0FxchEqz69E44WlaChdgtaLi3CvLZ0z1L3rStzM64+buayWkTR5I9sMd5sMJ871LAmuZ1vq5e0COVLCzDvk7O/oj3OGxeQxL/g0Z8m4iloNShlas8S4kS3BrTw5bpeMRVra9/h++4eYY2uOhY5SLHJksVBNEmmBoyVWuA3Bao8hWOk+GJt8PkRpRRJnKBLnRm5/3MhhdYjfyetZhhWnNUuio2+Pk+w3dcwLPkLb9hgrZpocu55DFRiQmSyu5w5GY8k8XMxdjOy0RTikmINVHu9goYMIS5xZLFNzqZqLnVgscpRigYMU8x2kmGcvxkInGbKLVWHtbqsSLdn90ZLFoiXLUi+bM8zwc6NhxLnfXoCmDAmaMi27ZGuOJZbNNDkmtG2PsWqmiaIl2xKNmYZjS7YcF/OWwz7gC6xwexvL3N7mRspSJwlWurAcV7k+zhXbWCzbxmIJJxKL+fYSLHKUI7tEtSAgcZqz+6M5i9V2Bg02GVicxgyJVv+EJPutmGmiENq2x6BCm7Is0ZDxa8iiIV2sxeYsOc4lrcH0zaaYa2uGhQ5mWOZsgdXuLNa6sfjencV6j06u81BdX+2qEo5EWuggwUINce60KHEtsz+uZbC4lmGplw1pZvjpmmHEuXe7APVpEjSkW3ZJGj3Le0McKpTUr0/vJtNYNOZ/hrZqF9yu9UBbjSfaaujogfZaLzTUHsfxJB8ozrlBmeSB8NgtWOkwEBs8pdjkyeIHLxabvVTHTV4sNnh2ikQjaamzBEucO8X5uUWJhsz+KofQcpJO1htYnKtpEtSlW3bJa70lztIZJor6DEtcTesea1LFuH55JX6+8wA3mgtxty0Ld9uyOd67nYP2tnJU1OaisjYLV67mIKfgBFZuGYwt3hJs9WZht0NF2x0sd755u0okGklr3VmscJFguYscOaWd4lzN6I+r6SyuplvqZ7IZfjSgOLWpEq2+C0lOsbQ3xFkyw0RB6tekdo/VKWLcLF+NyspqJB0dg7qMN3A14y2ODdnvITNzE9Z4DMIm7zdh6zMYdr6DsMVLBvsdLBx8WDj5dtLRh+Wuk0g0kkig1a4SrHSVI1ctzk/NStSm90dtGovaNEu9rEk2Q3uDYcS5e7sA1SkSrb4LSfYjJxfatscgccjjqsng3WCVWpzL5VdwOvwDVKdYoCpFyvFquhVSU1diiaM51rpJsNFTjC3bJbD3YeHsy2LbThaufixc/VVHFz/VdU4g9Qii+9a4yZGnFufHFiWq0/qjOpXVastj7Uoyw21DidNWgCvJYlSlyLpkbZoMZEehbXuMxTNMFNWpMlQmd48VSSK0Xl6F8vIrSAgfwXWCT6tJG4DklDVYsU2MDR4stmxXGZ5GCYnh7s/Ca3cn3XeprlM65aP86z0kWOsuR94FlTjtzUpcSbXClRQprqTI9LIysR/a6kOFdv5VuNNWgIqkzn7pI9mP7Ci0bY+xeLqJgtSvSOoeyxNFaL2kEufU4RGoTBKr01hUp7+D6LilWOUixkZPVbii0OWyk4WnP4vtu1n4BLLwDWThE6A69/BXpVM+yr/BQ4J17nLka4hTkWKFimQpKsg59LD8nGHFuZwoRjn1twuSU5AdhbbtMRZON1FQpy4ndo+XzonQXKYSJ/7QCJQnitVpLK6kD0V4zEKscrHg5hCa+GlUuPmphCBR/Peq6LdHJRSNIDd/VT5aJGz0lGC9R6c4t5uUuJxkhcuJUq22aLLsTD/crDOcOGXnxLhE/e2C5ckykB2Ftu0xFn5roricJEPZue7x4lkRmtTixIV9gLKz5rh4VsKxPEmOjLTV2OBFS2cxJw7NKWR8790sdu5hEbCPxZ4g1ZHOvQNU4lE+XeK0NSlxKckKZYlSlJEIenjBgOL83FaAi2fFWn0XkuzXK+Is+NZEwXXqbPdYekaEaxdXoqamDsmxM1CZ9Rkqs8aomPk5aotX4FSyM7Z4v4vNXhZw8pVyxidxaLQE7mex74DqSOJsJ3HUI4cLa54SrNMUp1GJi+escOGsVKstmixJ6IcbVw0jzk+3ClB6RqxVh5BkP7Kj0LY9BhV64ZwMJWe6x+LTItQWL8ODBw/w84/XcO9O3WO8T7zbjLDDbvDY8yHsd8jg7GMBz10SbN9ljp2BFgjYJ8WufaowR2HNVT3nbPFWLQi+11gQ3GpUovScFUrPSlFKzqGHxQn9cN2A4hSfFmv1XUiyX6+IM/cbE0XJWRmKTnePhQki1JWuRF1dA9JOLUVl7mRU5n6t5jfcsSJ3KvJOj0Fh5jycS1yCyJiZ2Bk0FAlnFuHkqTnYE/Ietu8Wc/MQreAopFEIpKX3GjcxVml8z7nZGIPi0yyKEixQlCDWy/Pxr6C55gCu37qJptZ6NLc26GTb7Zu4d/+eUI/H8NOtfBSeMtOqQ8iSM2LM/9rkuNC2PcbcqSaK4rMyFJLBu8Hzp0Sou7AKly9XQnFgGApOmaLglIUWi06LUXxWjgtJQ3Ax/Qvk57ujvNQD5blTUZy7CgejxmObr5j77kPfgzZvl8Jj7wgERdogJHoartRmcIZqaz6NCykjcSHlfVxI+UA/k99F1aW9mL1+PKxnvY5RM63w+Qy5gFYY891AfLPsI2xwmYejcWGoq68VaoOf20pQmjxUuw4tDsesyS9GCG3bY8yeaqI4f1qG/FPdY95JEWpLVAsCRegI5J8Sa+XpJIv8U1IUxItQljke+QU7kJS2EZeyp6A0ZxECwsZgq7cYm72k2LS9P3Jz7FCeOQZlaZ+grfkMZ6h/3m/Dz+2X8HN7WZe8016G1tYKTFjwLoZ++Ro2uM6Fs/9qOO1c+Yi23oux1nk6pq36GB9M7ochY1/EhDnDEBUThocPOx6J8/CfP+Pn29p1PF7fJdy6XnR/xPvyTULb9hizppooCk7LkEcG7wZzT4pQoxbnWOgI5J0Sa+XRyXgJipNHIjNzAxLTt+HyBW+kZjhg647X8b27GOHKBShN/xI5cWZc/uvXVH/P6Q5utd/EV4vexTBrCaqqK9HR0YGHDx8+4oN/PsDde3dw6/Z1XK4qgXvgeoycaoH3xr2GfSF+6NAQ6Elw//7DO4MGDabfohoWs6aYKPISZMiJ7x6z40SoLlaJczRkBHLixVp5dPKkDDlxEhScGYyizFnIzdqI06ke2OA1AOu8BiE5aRHOn3kd2SelyD1lhdYG1ZzTHZDReXFqaquFyToRczoMH30jwvBxEhSVFAqTu8S9e/fuvPnmm/TjLMNi5hQTBRktK657zIwV4UqRSpyoAyOQFSfWytM1WWSesEB+wgBkJM+Brd/HWOE2EGfOzEV+whvIPCFB9smei1NdUyVM1oMOOPgux5Cxf4XrdjthYpfoVXGy4mXIiOse02NFqNQQJyNOrJXniRgrQm7yV3DdPx4LnQbg1Om5yEt4A+knJMh8quIAiZknMGSsCeatmCJM6hK9Js6MSSYKMlJabPeYGiNCRaFKnMigEUiLFWvleSIqVeI47/0Sc+wH4GTCXOScegOpSgnST1ihuf7piZNXkoa3xppg1rKJNJCeGL0qTnqcDKlk8G4wJUaE8sLVKK+oQfj+EUiNFWvleSIqRchJ+gp2AV9i+hY5lPHzkX1qEFKUEqSdsELLUxQnPjmaC2uL10wTJnWJXhNn+iQTReoJGZKV3WNSjBil2bNwoTge0SHDkKyUaOV5EqYoxUg5OxnrfMdh8iYZjsbNQ2b8m0iKkSAl9umNnI4O4AePeRg8xgSBQb7C5C7Rq+Ikx8qQGPNraInEGCucOy68/uRMjbVC/Om5mOHwDiZv6g9F3DyknxyEc8clSFJaoamu98V52PEQ4cpAvP/Vqxj/3YdobmkWZukSvSbOt5NMFIlKGc4e/7VkdVx7UkqRGj8Ue6KXYNz3Fpju8C5i4ucg5cQAnDkmxrnjlmis+xXfc27feCTO1bqrwuRHePjwn6iuK4dbwPf4YFI/WE8fgszsNGG2X8T9+w/uDB7cC99zptqYKM7GyHBa8bTJIiHaHOez12J/zBaEndiM1Lx9uFDihfOZc5CXNgO5yVPQ2qj6j8+Ohw/w4P7tJ+KNW434atF7eP9Lc/gHb+NGxaHjux8xNNoX3vu3YPGWiRg1oz8++VoOO4+VqKq58pjROzr+qVW2Fh+046cfW+8OGfL6GqFtewwSh4x16ujTpARnjg9E1rmJqCzzQ0NNJOqrDqKuKhR1VYdRXxOFuupIXK06jJ/aVQZrbc5ATspM5CR/i5yUafqZPBWXysIxeekIDLd5DUMn9sV7E/4u4MsYOqEvhk18hTsfPW0Qgg77oam58TFx2m4UISfpa+06NJibMh3ZSd90TBj39wNC2/YYU2xMFAkKGeKPPgVGy3AyWoqUU5/hwnk71FSGoKFWgZZrZ3G9KQ3XmzNxoyULN1qyVWzOwr27LZyh6muPIy5KjNjIfjhxxFwvYyP6ojDfC5OXfYRhY0WITzyGoks5OH8x6zHmFafhdJoCAYdcsfCHL/HRVDHGfjcEIeEBuHPnDldn87VEKCNe1apDyPhoC0yx+UuM0LY9xqSJJgoyXFxUb5PFiSNSpJ2dgMqy3WisP4XrJEBrDm608FSL8og5uHu3VS2OEnHRVog9IsWJKJlexkaao7Bgh0qcX5hzePx850ecSonGpCXDMGTM3+DuY4cHDx6itSkFsUdEiIuWdcn4YzJMmdgLf88hceKOyhBLHestHmGhPMIi7awNrpQHobUpHddbc3C9hZjdBR8XJzbKCjGRUiiPyPTyeIQ5zufvwBS1OE+yWuNxseI8pix7H+988SqiY47gZmsmlJFi7f4ISPYjOwpt22NMmmCioApiIlkcj5SqGCHRTXU65Y2JpHt+iVSmhPucdm4qrpQHo7U5U78ozdlofYyd4tTVKhFzxAqKCGqDTC+PhZuj4FeKQziRGIH3bV7D9MVf4tLFGMRGsYg5IuuSsdG9JI7NhD6K45FiKCJliD06CPExHyAxYTzSk2YgM2UeMlPmIz1xBnctPmY4lNFvcHmPhotxLEICRQQLRSRRxh2PRUi565SuiJRz9+RmLEdVRRham0iYXDVztITg03SKU6OEItIKR8OpfJleRh82R37erxfndvtNTF46DEO/kCApaTdioy21HEBIZZQM5ORC2/YYk2z+rjgbPxoZKfNRVOCIy2WBuFJxENVXIlBTFcWRPtO1SxcDUJhvh4zkeTgb/yXijg/H8ag3cCxSzhlGEdkfyqODEa8cgXMJXyE7fRnKLuzE1RolZ+iW5mxcqz+HutoTuFqtQE1VNGqqjqh5FHW1sbhWfwYtTZlo5UTKfSQOlXEs0grR4VIcjZDpZVQPxSEs2DQOg0e9iqNHnaCMtlQ7nn7GRMlg0xvizJv7kaLi0l7UVh/HtYZzaGpMRXNTJmfIlpYcFZuz0dyUgcZryaivO42aqmO4XLYPJYWeOJ9vj/ycTcjL3oD83M0oLHBGadF2VFwORm2NEk2NKWhuzkJdbRzKL+1HafF25OdsQVb6cqQlz0Nq0iykJs1GRuoi5GVvREmhB1c2taepMe2ROFRWVLgVIg9JceSwTC8jwsyR20Nx5q4fg7dGvYroo444HmWp5QBCKo70kjhLltgo6uviUFcbj/q6BLVA6WhpyVULoxKHOz4SKwfNzdlovJaCuroEXK2NQ21NLHdsqD+rErg5B60teWioP4fLl/YjO3MtTsePhyL6bUSFWyLyMMsZupMsZ9xjUYORcHIsMtKW4UKJD9pvq/5YRuIcCbdCBOU9LNPL8B6Kc7OtFZMWD8W71hY4c2YnjkVaIipc1iWPRsowsTfEmT17pOJ8gSPycu1QkO+E4kIvlF0IRGVFBOrqTqOpKZMzNMcmGkEa5ITL1cmmxkzUVCtRmO+K+LhxOBI+AOFhYkQcYhFxSNYFWYSHSRBxyBJKxce41pDCGY3KijhkhcMHpQgPIxF081CoOXJyd2DK8l8nzpm04xgx1RwTvhuJwoIjiA5XOU1XjI6QYeL4XhBnwviXFJGHrRAeZomIQwMQFfkWYmM+Q+LZWcjNtkXZxf2oqT6BhvpkNDeRSLmqo5BqURqvpaPuagIuXQxCWuoKRB15G4dCJTh8kMXhMNkTU3WPDNVVqmdrJM7hQ1YIOyjFIUrXw4M9EKexpQ5zN1hj8Ji/YscudzQ2pKodRehAj/NIuAwTekOcceNMFIcPyRB2kMgiLJTFwVAJx8iIwTgR+wUy0tehtGQXKsrDUVMdi7q6M2hoSEZDQwp3rK87i5qak6isjMbFi/uRm+OAuBNf4nBYfxwMlarL7h7pvkNhVqiuUj2VrqpSIuygFUJDpDgYSum6GRJsjqycTnHq6uuEGmiB/gGEvuMss53E/T3n20Wj0dTYguamdISFirQcR8iIwzKMH9dL4oSFyRAaqoMhUoSEkFByREV9gISEmUhPX4ecbHvk57ty/4NGx5wcB2RkbEJi4iLExIzGobCBCA2RIDSE1S7zCRlCIhy04kQh0DE01ArBwdQmStfNA0HmyMxWiTP0CxES007hcmUpLlWWPGJ5VSnKrhQhvyQdyjOH8YPHfHw2Xcb9i9SsFeNQeaWcq5Mc72CICIcOyrpk+KFeEmfsWBNF6EEZgkO6IssZ5cABMUJCLXH48FuIPDIMkUeGc8fD4UMQerA/DgSLcSBYosqvVUb3eIBECLXCFbU4V64oERxihaADUhwIpnTd3L/fHBnZ3vhq0Qd4Z9zf8Nk0K4yeORCjZ7z+iNazBmL0dwO4PxO8Pe4lDJ3wCibOG4bA0O2PPfykUB4SLNIanUJSOCUnF9q2xyBxQkK1O6mPQcEsZ6D9BySPSOdBB1itvD0hlUlikCiEyitKBAXLsS+I6mT1cs++fsjN34UdQY7Y7LlAzfmPkf7iabdjKbbv3YLDikDkFWXgVtvNR6LwqK9PRnCwSGtUC0mRp1fEsR7bRxEUovqPf8NRin1BatJnrfRf5l4SIVjOicKLs++AHHv2S7A3iNJ1c/ceU1y4aJh/ZCdxgoJECA6WdUkSiJxcaNsew9q6j2J/sHYnfw0D91kgYK8ZZ8B9ByyxN0iGgL0i7hoZW5i/K6rK6BSnolKJPUFyBOyTcD8b0Uf/QFOUXDCMOHX1ydgXJEIQFzH0MzhUBuveEGeMdR/FXvXvZLpL+vFT4H4pdu+14D4fj52E3HwvXCqPwpWqOFRcOYHzRSGIP70Be/YPh1+AOQL3S9T3dc0AyndAzolCKK9UInC/HLv3SrgfXOmjX4Apig0ozt79FlqhU8gDISwoAglt22OMsu6jCKRwsO/XUIpde8SIVnyJmtpEtLRWoaIyE3kFIcjI9kROvg8uXT6GpqZSXLt2GXHxXvD1fwt+9Nuc/cKyHucuEmG/nBOFQMfd++Tw3yPBrr2Urps+u01RXGoYca7WJXPRQDiqhaTIQxFIaNseg8QhQwk7+Uv03yOF3x4RziV/j7bbLUjPOIb9wRPh7S/GzkDVj6M40mg5MBAJ51aguaUUJaU58Ns9Gr4BYu6HU8JyO8uXcGJoiuO/T46deyTwo9+S6qG3gcUJ2KeKCl1xXzALikBC2/YYn4/poyAj0U8Bu0Of3eaIS1iAtrbrCI+0g4ePBL4BFlr5iDv3SLn8+w++h/NFYQjYNwfe/uZa+R67J1AC/71yXK5QiUPHnXvk8AmQcL+E00cvf1MUlhhGnNq6ZOzaqxrlXXHPgV4UhzxO2MmuuGO3CEGHRqD1eiUOR7him5cZfPd0bTTuvgAxR59AqVaakCQCiXFJLQ4dffbI4R0gwQ4qSw89DCyO/x4LrZArJE0LFIGEtu0xPhvTR+G7hwz3pJRi+y4LZOX5oLAoF7bOcs7Y2vl6Ru/dEvgEdopTVq7EjgA5vOg3pbtVP5nXRbedpjhfbCBxriZzoZn/Wb4+7t7fS+J8MqqPgjxO2El9pB/c+gcNQUtrGXz9V8LVx0wrjyFIIngHyDlRCHT0CpDDY5cEntQOPXTxNZw4NVeT4RNgwf3auyv672NBEUho2x7jH6P6KOhn5p67nozufiIER47hfqjr7PEJ3P3oF9La+XpKD38JvHbLcVEtDh09d8nh5ifhftyrj847TJFvKHFqk7Fjt4VWyBWSpoVeEeejUX0UXgEsPMggT0BXPwscjZuLwsIiOHq+DfddYq08hqC7P42QTnEulCvhvksOVz8Jt1+BPjoZUJzq2mQuhAtDrpA0LdD0ILRtj/HR530UZAzawOFJuM3XAsdPLUZefg7s3AfDzU+slccQdN1JI0SOC5fV4lxWwtVPjm2+Em6PHH102G6KvCLDiFNVmwxPfwutkCskTQs0PQht22OQOG67VNtqPQmdfC1w6NjXKLt4GQ4ew+C8U6SVxxDctlMCVw1xSi8r4bJTDicfCbdfgT7aeZkit9Bw4nj4Wzy2w5UuegeyoOlBaNseY+TnfRRkDGEn9dFxhxh+wSPR2toIB7dxsPc218pjCJII23bKUXpJJU7JJSWcfOVw2CHhdvnQx62epsgxoDhufhZaIVdImhZoehDatscgcZzV25o8Cck4zjutUF59FpFRAdjoYgZH9W6DhiRXj6+cE4VAR0cfOey8JdyebPq42cMU2ecNI86V2mS47rTQWnQISavEXhHnw0/7HHeg3TN0dFQXaQvIrV5miIpbivqGq/jB6R+w3W7BXRfm1UVbbxHsd0h+MT+JQGLw4hSVKWG/Q46t2yWw9aZydHOTuymyDCiOs6+FalfFLuiuEsfw26u8/3Gfo7StibCTXVMKux2WKL4Ug5zcFGx0fhubPc115OvkVm8ptniJ4BM0Cvbe72CLV9dGJhFIjOKyTnFsd8ix2UvC7WSojxvcDChOTTIcfSy4rV+6Im2H+eGnfY4KbdtjWL7+nOMmdym3jRZ1jo5Pws1eIrgFDEVNXS7OF2XA2cca613N8YOXBTZ70VYpKv7gJcImDxLOEorTG9DUchWeOxdhnauZVpmapD1B7XbIOVEIdNzqLccPXhJuJ119XOdmikwDiuPgYwEK+zqp3q/UfrsUVm88R294Nyyef/6ZgZNnvdJu6yvT6ugvcZOnCK6Bw1F48TiuNdYiIfEAduz7Ctt2DYOT3xA4+w+B576PEHFiOcqrUtDUVIfQSAdscLXCD15SrfI0SSKQGLw4hReV+MFLzm0vSVtT6uMaF1NkFBhGnIqaZNh5W2jNh5p02SXDt3NfaSc7Cm1rCPyX7I3n7BZusMAWHxm3M213uN5dtY/nweOLUHzpBBpbKtHYVIVrzZfRfL0S12/Wo7auDKeTg+Dg/RnWuphjI238raMsTdJOhZu3y1GoFuf8RSU2ecm5fdhog3B9XO1iinQDimPrrZpPddHZX4aVmy3Q/43n7DTee2pwPDvwnT8HkECbfWTYqN4hvTtc62aOjV6WcN/7MXYdmowDR+dh35E58AmeCIed72ONiwjrPURa9+kjiUBikCgEOq73lHNbGtN2+/q4wtkUafkGEqc6GVu2WzzaoJwnzdFO/jIs32yBN9/9c4DgRbK9gt+KLJ9dN+G7vo1rXaTY5C3Des5Iqm3sn4Tfu0ux1lWE1S7mWO1ixnGNK+0tLcI6D6lW/q74vTuNkE5xCi4ouW0l17hKuC319XG5k2HFoS0w+UUKCePgJ8NmTymmzunbKLF6ll6HrPnW3t7F/zz/zJtDPnghaPzMvjeW2omxjgTyknFeKTREb5JEIDFIFALt9Un7TK9ykXAvpNDHpY6mSMkzjDjlVcnY5GUBO18ZbH1YrHUWY9LsvjfeHfFC0PPPP0MvTP+XQWwhe3bjp1/9LXPasn4PVrlIsc5ThjX0to6nwFU0QtwfF2e1qxwrtnW+5kUXFzsYTpzq+nSsd7PAnFX9HoyZ9LdMsfzZjWQXoaH+lTB5zezZie/+4y8R42e9cnuJvQRrPWQcV6nf2NEbXOmi2i6f3x2XNmKldxssc5Zg+TZWLxfamyLZAOL8+OOPCD7oe/u9j56PMBM9O1H9cvF/W/zmmT8y/SX9n3MaNfnlomkrzbDChcVqdxl3NDSXb5NwG7Dyu+PSRqz0VpAlTpJHb6vSxfl2pkjK/fXilJSUICQkpOirr75yevHFF/sL3mz/fwIv92P/Z/q7n/41dvzsV+8vcZBipbsMK91knPfSy4l6Snp/zgqXzhdN0Ktalm6TY5GjhHuFmD7OtTVFYjfFuXfvHhISEu47OzvHjh49ejr1T9jh/4v47z/1+e0Q6cDnfEZ//XLFtNXmWOYiw3JXGfdetp5wsZMEy1w6ty7OKVFisbMcC7g3UnW+iE/IWVtNcS7nycSpqKjA0aNHK7799ltfsVg8hPoj7OB/CvqZyZ5d8L71i4lfznnt4SInFktJpG0y1cvyusmFjhIs2db5ciN6AxX3+kp7CeY7sHo5c8svi5OYmPhw+/btidbW1guo3cKO/CfjOZNXfv+BfMjzQaO+7Vs3bZ0Ii5xlWLxNhgWO7BNzvoMEizReC5ZVosR8Rznm2Ekw157VS3pP3NlsbXHq6+uhVCrr5s2bFzR48OAPqJ3Chv//BrF5/2fXDh/7Usb4+aaY7yjDQmcZFjjJOC+f1wXn2kuwQOOFepnFSsxzkGO2rQRz7FidnG3HYtoPpkjMO/RIlKysLOzevTvDxsZm7b/bMvjfBX1eNvuDdf+hLxwZNeOVlukbxJxQ851kWp7Pk0YIjRQaMbw4s+3lmLlVgu9sWZ2c4yDD9C1miIrfiaTElJZVq1YdGTlypDXVL2yQEboxQDTwOfsPv/xbwYRFZphjz2Keo4w7kufPtlUdZ9lKMNdBjqxitThFSsyyk2PGFglmbmU7actilr2MO45baIZh414qGDKctWeYZwYIKzbiyfGyKfvHKa+//5cTo797rX3aRgnn+bMdZNwooBFCI4VGDCGjSImZtpaYtlmM6VukmGnHYqY9i6/Xi/HZzNfaB7z/lxOvsH+c8p+yDP53wjvSQX/y+NDm72Xjl5irRoKdFLNInCKVOOlFSky3tcS3WyWYbsti7GIzDLf5e5lo0J886H5hgUYYHuavyZ+d9cZIk9RRs1+9O32LDHmX4jlxcstO4ZtNMnzy3at3B44wSaV8lF9YgBG9j9/+9rfMcOlbL+zxDXStysvLg2+gWxWd0/Wn+pjeiK7wjPyTTz6ZREdhihFGGGGEEUYYYYQRRhhhhBFGGGGEEUYYYYQR/yb4Xzi6KYKgOj8sAAAAAElFTkSuQmCC" alt="Escudo del colegio">
+  <div class="heading">
+    <div class="eyebrow">Dibujo técnico · PAU Castilla-La Mancha</div>
+    <h1>Tangencias: dos rectas y una circunferencia</h1>
+  </div>
+</header>
+<main>
+  <section class="card" aria-label="Animación de la construcción geométrica">
+<svg class="stage" id="figure" viewBox="-131 -82 221 143" role="img" aria-label="Construcción geométrica de la circunferencia mayor tangente a dos rectas y a una circunferencia mediante dilatación y potencia">
+        <defs>
+          <pattern id="grid" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="#d8e2eb" stroke-width=".38" opacity=".62"/></pattern>
+          <marker id="arrowPurple" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0 0 L5 2.5 L0 5 z" fill="#7950d9"/></marker>
+          <marker id="arrowBlue" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0 0 L5 2.5 L0 5 z" fill="#246be8"/></marker>
+        </defs>
+        <rect x="-131" y="-82" width="221" height="143" fill="#fbfcfe"/>
+        <rect x="-131" y="-82" width="221" height="143" fill="url(#grid)"/>
+        <g id="baseGeometry">
+          <line id="lineBottom" x1="-131" y1="0" x2="0" y2="0" stroke="#304254" stroke-width="2.5" stroke-linecap="round"/>
+          <line id="lineTop" stroke="#238d54" stroke-width="2.5" stroke-linecap="round"/>
+          <circle id="givenCircle" cx="-35" cy="-5" r="18" fill="#bd7b28" fill-opacity=".045" stroke="#27374a" stroke-width="2.8"/>
+          <circle id="vDot" cx="0" cy="0" r=".9" fill="#21374b" stroke="white" stroke-width="1"/>
+          <text x="2.6" y="-2.4" class="small-label">V</text>
+          <text id="pointOriginalLabel" x="-30.8" y="-2.1" class="muted-label">O</text>
+          <text id="givenRadiusText" x="-51" y="-9" class="muted-label">r = 18</text>
+          <text id="labelS" x="-121" y="-4.2" class="data-label data-original">s</text>
+          <text id="labelR" x="-81" y="-70.8" class="data-label data-original">r</text>
+          <text id="labelC" x="-29" y="6.5" class="data-label data-original">c</text>
+        </g>
+        <g id="shiftedGeometry">
+          <line id="shiftBottom" stroke="#7a53d4" stroke-width="2.6" stroke-linecap="round"/>
+          <line id="shiftTop" stroke="#7a53d4" stroke-width="2.6" stroke-linecap="round"/>
+          <circle id="vprimeDot" r="1.05" fill="#7950d9" stroke="white" stroke-width="1.1"/>
+          <text id="vprimeLabel" class="purple-label">V′</text>
+          <text id="labelSprime" class="data-label data-transform">s′</text>
+          <text id="labelRprime" class="data-label data-transform">r′</text>
+          <g id="offsetArrows" opacity="0">
+            <line id="bottomArrow" stroke="#7a53d4" stroke-width="1.5" marker-end="url(#arrowPurple)"/>
+            <line id="topArrow" stroke="#7a53d4" stroke-width="1.5" marker-end="url(#arrowPurple)"/>
+            <text id="bottomOffsetLabel" class="purple-label">18 mm</text>
+            <text id="topOffsetLabel" class="purple-label">18 mm</text>
+          </g>
+        </g>
+        <g id="pointGeometry" opacity="0">
+          <circle cx="-35" cy="-5" r="1.5" fill="#d17c21" stroke="white" stroke-width="1.4"/>
+          <text x="-31.5" y="-7.7" class="small-label">P ≡ O</text>
+          <text x="-30.5" y="-9.0" class="data-label data-circletransform">c′</text>
+        </g>
+        <g id="bisectorGroup" opacity="0">
+          <line id="bisectorLine" stroke="#6e8cba" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <text id="bisectorLabel" class="muted-label">bisectriz</text>
+        </g>
+        <g id="reflectionGroup" opacity="0">
+          <line id="reflectionLine" stroke="#e2962c" stroke-width="1.8" stroke-dasharray="3 3"/>
+          <circle id="mirrorMid" r=".9" fill="#e2962c"/>
+          <circle id="mirrorPoint" r="1.6" stroke="white" stroke-width="1" fill="#d68b25"/>
+          <text id="mirrorLabel" class="small-label">P′</text>
+          <text x="-69" y="-33" class="muted-label" id="mirrorDetail">P y P′ son simétricos</text>
+        </g>
+        <g id="powerGroup" opacity="0">
+          <line id="secantLine" stroke="#dd982b" stroke-width="1.7" stroke-dasharray="4 3"/>
+          <circle id="powerX" r="1.5" fill="#d58723" stroke="white" stroke-width="1.2"/>
+          <text id="powerXlabel" class="small-label">X</text>
+          <line id="powerSegment" stroke="#7950d9" stroke-width="2.7" stroke-linecap="round"/>
+          <circle id="powerH" r="1.5" fill="#7950d9" stroke="white" stroke-width="1.2"/>
+          <circle id="powerHother" r="1.1" fill="#94a1af" stroke="white" stroke-width=".8"/>
+          <text id="powerHlabel" class="purple-label">H (mayor)</text>
+          <text id="powerHotherLabel" class="muted-label">H₂</text>
+          <text id="powerFormula" class="purple-label">XH² = XP · XP′</text>
+        </g>
+        <g id="centerGroup" opacity="0">
+          <line id="centerPerp" stroke="#1f72bd" stroke-width="1.8" stroke-dasharray="3.5 2.5"/>
+          <circle id="centerDot" r="1.3" fill="#246be8" stroke="white" stroke-width="1.2"/>
+          <text id="centerLabel" class="blue-label">C</text>
+        </g>
+        <circle id="auxCircle" fill="#7950d9" fill-opacity=".025" stroke="#7950d9" stroke-dasharray="8 5" stroke-width="3" opacity="0"/>
+        <circle id="finalCircle" fill="#246be8" fill-opacity=".055" stroke="#246be8" stroke-width="3.3" opacity="0"/>
+        <g id="finalMarks" opacity="0">
+          <circle id="finalCenter" r="1.4" fill="#246be8" stroke="white" stroke-width="1.1"/>
+          <text id="finalCenterLabel" class="blue-label">C</text>
+          <circle id="contactBottom" r="1.4" fill="#246be8" stroke="white" stroke-width="1"/>
+          <text id="contactBottomLabel" class="blue-label">B</text>
+          <circle id="contactTop" r="1.4" fill="#246be8" stroke="white" stroke-width="1"/>
+          <text id="contactTopLabel" class="blue-label">A</text>
+          <circle id="contactCircles" r="1.6" fill="#d5862a" stroke="white" stroke-width="1"/>
+          <text id="contactCirclesLabel" class="small-label">Q</text>
+          <line id="centersLink" stroke="#b67c3b" stroke-dasharray="4 3" stroke-width="1.2"/>
+          <text id="radiusResult" class="blue-label">R ≈ 25,9 mm</text>
+        </g>
+      </svg>
+    <div class="caption-area" aria-live="polite"><span id="phaseText">Partimos de dos rectas y una circunferencia. Buscamos la solución mayor.</span></div>
+  </section>
+  <div class="controls"><button id="play" type="button">▶ Reproducir</button></div>
+</main>
+</div>
+<script>
+
+'use strict';
+// Geometría real (mm); coordenadas SVG con eje Y positivo hacia abajo.
+// En el croquis original: 36 mm es el diámetro, de modo que r=18 mm.
+const r=18, V={x:0,y:0}, P={x:-35,y:-5};
+const add=(a,b)=>({x:a.x+b.x,y:a.y+b.y}), sub=(a,b)=>({x:a.x-b.x,y:a.y-b.y});
+const mul=(a,k)=>({x:a.x*k,y:a.y*k});
+const dot=(a,b)=>a.x*b.x+a.y*b.y;
+const length=a=>Math.hypot(a.x,a.y);
+const norm=a=>mul(a,1/length(a));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const smooth=t=>{let s=Math.max(0,Math.min(1,t));return s*s*(3-2*s)};
+const reveal=(t,start,end)=>smooth((t-start)/(end-start));
+const w=sub(P,V), d2=dot(w,w);
+if(d2<=r*r) throw new Error('La circunferencia impediría trazar una tangente desde V.');
+// Tangencia oblicua de V a la circunferencia: rama superior.
+const T=add(mul(w,1-r*r/d2),mul({x:-w.y,y:w.x},r*Math.sqrt(d2-r*r)/d2));
+const oblique=norm(T), nout={x:-oblique.y,y:oblique.x}; // hacia fuera del ángulo
+// Tras desplazar ambas rectas 18 mm hacia fuera, el nuevo vértice es V′.
+const Vp={x:r*(1-nout.y)/nout.x,y:r};
+const bis=norm(sub(V,Vp)); // la bisectriz desplazada pasa por el V original
+// Reflejar el centro P de la circunferencia original respecto de V′V.
+const relative=sub(P,Vp);
+const P2=add(Vp,sub(mul(bis,2*dot(relative,bis)),relative));
+// X: intersección de la secante PP′ con la horizontal dilatada y=r.
+const X=add(P,mul(sub(P2,P),(r-P.y)/(P2.y-P.y)));
+const power=length(sub(X,P))*length(sub(X,P2));
+const tangencyLength=Math.sqrt(power);
+const H={x:X.x-tangencyLength,y:r};      // solución mayor
+const H2={x:X.x+tangencyLength,y:r};     // solución menor
+// Por H una perpendicular a la horizontal; intersección con la bisectriz.
+const distAlongBis=(H.x-Vp.x)/bis.x;
+const C=add(Vp,mul(bis,distAlongBis));
+const bigR=-C.y; // radio final al DESHACER la dilatación
+const auxR=bigR+r;
+const smallerC=add(Vp,mul(bis,(H2.x-Vp.x)/bis.x));
+const smallR=-smallerC.y;
+// Contactos finales (coherencia comprobada en mm).
+const B={x:C.x,y:0};
+const A=add(C,mul(nout,bigR));
+const Q=add(C,mul(norm(sub(P,C)),bigR));
+const distCP=length(sub(C,P));
+if(Math.abs(distCP-bigR-r)>1e-7 || Math.abs(P2.y+r)>1e-7){
+  throw new Error('La geometría no satisface las condiciones de tangencia.');
+}
+const $=id=>document.getElementById(id);
+const set=(id,attrs)=>{const e=$(id);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,String(v)));return e};
+const line=(id,a,b)=>set(id,{x1:a.x,y1:a.y,x2:b.x,y2:b.y});
+const point=(id,p)=>set(id,{cx:p.x,cy:p.y});
+const label=(id,p)=>set(id,{x:p.x,y:p.y});
+const opacity=(id,v)=>set(id,{opacity:Math.max(0,Math.min(1,v)).toFixed(3)});
+const stepInfo=[
+  'Partimos de dos rectas y una circunferencia. Buscamos la solución mayor.',
+  'Separamos ambas rectas 18 mm hacia fuera y reducimos la circunferencia a su centro.',
+  'El centro de la circunferencia auxiliar estará en la bisectriz. Reflejamos el punto auxiliar.',
+  'Por potencia determinamos el punto de tangencia correspondiente a la solución mayor.',
+  'Trazamos la perpendicular desde el punto obtenido y localizamos el centro en la bisectriz.',
+  'Devolvemos las rectas a su posición y recuperamos la circunferencia inicial.',
+  'Resultado: la circunferencia azul es tangente a ambas rectas y a la circunferencia dada.'
+];
+// Elementos fijos del problema / construcciones.
+line('lineTop',mul(oblique,240),V);
+line('bisectorLine',add(Vp,mul(bis,225)),add(Vp,mul(bis,-20)));
+label('bisectorLabel',add(Vp,mul(bis,170))); // the label is moved slightly below
+line('reflectionLine',P,P2);
+const midpoint=mul(add(P,P2),.5);
+point('mirrorMid',midpoint); point('mirrorPoint',P2); label('mirrorLabel',add(P2,{x:2.4,y:-3.0}));
+line('secantLine',P2,add(X,mul(norm(sub(X,P2)),12)));
+point('powerX',X);label('powerXlabel',add(X,{x:2.4,y:5.2}));
+line('powerSegment',X,H);point('powerH',H);point('powerHother',H2);
+label('powerHlabel',add(H,{x:-15,y:7.2}));
+label('powerHotherLabel',add(H2,{x:2.0,y:7.0}));
+label('powerFormula', {x:-118,y:37});
+line('centerPerp',H,C);point('centerDot',C);label('centerLabel',add(C,{x:-5.8,y:-3.5}));
+point('finalCenter',C);label('finalCenterLabel',add(C,{x:-6,y:-3.5}));
+point('contactBottom',B);label('contactBottomLabel',add(B,{x:-6,y:7}));
+point('contactTop',A);label('contactTopLabel',add(A,{x:-5.8,y:-4.4}));
+point('contactCircles',Q);label('contactCirclesLabel',add(Q,{x:3,y:-4}));
+line('centersLink',C,P);
+label('radiusResult', {x:-114,y:-60});
+set('auxCircle',{cx:C.x,cy:C.y,r:auxR});
+set('finalCircle',{cx:C.x,cy:C.y,r:bigR});
+// Two lines displaced OUTWARD by r: distances are exactly r from originals.
+let t=0,playing=false,speed=1,lastFrame=0,frameHandle=null,currentIndex=-1;
+function shiftAt(t){if(t<1)return smooth(t);if(t<4)return 1;if(t<5)return 1-smooth(t-4);return 0}
+function render(now){
+  t=Math.max(0,Math.min(6,now));
+  const q=shiftAt(t),rr=r*q;
+  const vq=mul(Vp,q);
+  // The two shifted parallels are homothetic to their final positions.
+  line('shiftBottom',{x:-131,y:rr},vq);
+  line('shiftTop',add(vq,mul(oblique,240)),vq);
+  point('vprimeDot',vq);label('vprimeLabel',add(vq,{x:3,y:6}));
+  label('labelSprime',{x:-119,y:rr+6.6});
+  label('labelRprime',add(add(vq,mul(oblique,125)),mul(nout,4)));
+  opacity('shiftedGeometry',q>.003?Math.min(1,q*1.55):0);
+  const baseOpacity=1-.79*q;
+  opacity('lineBottom',baseOpacity);opacity('lineTop',baseOpacity);
+  opacity('labelS',baseOpacity);opacity('labelR',baseOpacity);
+  opacity('labelC',1-q);
+  set('givenCircle',{r:r*(1-q)});
+  opacity('givenCircle',Math.max(.06,1-q));
+  opacity('givenRadiusText',1-reveal(t,.55,.9));
+  opacity('pointOriginalLabel',Math.max(0,(1-q)*1.1));
+  opacity('pointGeometry',Math.min(1,q*2.2));
+  const arrows=(reveal(t,.14,.55))*(1-reveal(t,1.15,1.6));
+  opacity('offsetArrows',arrows);
+  line('bottomArrow',{x:-106,y:0},{x:-106,y:rr});
+  const arrowOrigin=mul(oblique,50);
+  line('topArrow',arrowOrigin,add(arrowOrigin,mul(nout,rr)));
+  label('bottomOffsetLabel',{x:-103,y:rr/2+1});
+  label('topOffsetLabel',add(arrowOrigin,add(mul(nout,rr*.55),{x:3,y:-3})));
+  // RRP auxiliary constructions appear in explanatory order, then fade.
+  const fade=1-reveal(t,4.12,4.83);
+  opacity('bisectorGroup',reveal(t,1.10,1.68)*fade);
+  opacity('reflectionGroup',reveal(t,1.57,1.96)*fade);
+  opacity('powerGroup',reveal(t,2.12,2.85)*fade);
+  opacity('centerGroup',reveal(t,3.16,3.78)*(1-reveal(t,5.05,5.65)));
+  // Throughout the restitution, the solution loses the SAME radius
+  // regained by the given circle, so external tangency is conserved.
+  const circleAppear=reveal(t,3.43,3.97);
+  const currentR=bigR+rr;
+  set('auxCircle',{r:currentR});set('finalCircle',{r:currentR});
+  opacity('auxCircle',circleAppear*q);
+  opacity('finalCircle',circleAppear*(1-q));
+  const finalOpacity=reveal(t,4.72,5.62);
+  opacity('finalMarks',finalOpacity);
+  const index=Math.max(0,Math.min(6,Math.ceil(t-0.000001)));
+  if(index!==currentIndex){
+    currentIndex=index;
+    $('phaseText').textContent=stepInfo[index];
+  }
+}
+function setTime(v){render(v)}
+function updatePlay(){const b=$('play');b.textContent=playing?'❚❚ Pausar':'▶ Reproducir';b.setAttribute('aria-pressed',playing?'true':'false')}
+function pause(){playing=false;lastFrame=0;if(frameHandle!==null){cancelAnimationFrame(frameHandle);frameHandle=null}updatePlay()}
+function advance(time){
+  if(!playing)return;
+  if(lastFrame){const dt=Math.min(100,time-lastFrame);setTime(t+dt/1000*(speed/3.25));}
+  lastFrame=time;
+  if(t>=6){pause();return}
+  frameHandle=requestAnimationFrame(advance);
+}
+function play(){if(playing)return;if(t>=6)setTime(0);playing=true;lastFrame=0;updatePlay();frameHandle=requestAnimationFrame(advance)}
+$('play').addEventListener('click',()=>playing?pause():play());
+render(0);
+
+</script>
+</body>
+</html>
